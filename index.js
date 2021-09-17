@@ -41,7 +41,7 @@ creator
 if (process.env.DISCORD_GUILD_ID) creator.syncCommandsIn(process.env.DISCORD_GUILD_ID);
 else creator.syncCommands();
 
-client.login(process.env.DISCORD_CLIENT_TOKEN);
+client.login(process.env.DJS_TOKEN);
 
 module.exports.client = client;
 module.exports.creator = creator;
