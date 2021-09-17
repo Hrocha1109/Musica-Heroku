@@ -19,8 +19,8 @@ client.player = new Player(client);
 registerPlayerEvents(client.player);
 
 const creator = new SlashCreator({
-  applicationID: process.env.DISCORD_CLIENT_ID,
-  token: process.env.DISCORD_CLIENT_TOKEN,
+  applicationID: process.env.DJS_CLIENT_ID,
+  token: process.env.DJS_TOKEN,
 });
 
 client.on('ready', () => {
