@@ -17,14 +17,14 @@ module.exports = class extends SlashCommand {
         await ctx.defer();
 
         const queue = client.player.getQueue(ctx.guildID);
-        if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: "❌ | No music is being played!" });
+        if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: "Não tem nenhuma musica tocando, burro" });
         const progress = queue.createProgressBar();
         const perc = queue.getPlayerTimestamp();
 
         return void ctx.sendFollowUp({
             embeds: [
                 {
-                    title: "Now Playing",
+                    title: "Tocando:",
                     description: `🎶 | **${queue.current.title}**! (\`${perc.progress}%\`)`,
                     fields: [
                         {

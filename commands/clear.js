@@ -17,10 +17,10 @@ module.exports = class extends SlashCommand {
         await ctx.defer();
 
         const queue = client.player.getQueue(ctx.guildID);
-        if (!queue) return void ctx.sendFollowUp({ content: "❌ | No music in the queue!" });
+        if (!queue) return void ctx.sendFollowUp({ content: "Não tem nenhuma musica tocando, burro" });
         
         queue.clear();
 
-        ctx.sendFollowUp({ content: `❌ | Queue cleared.` });
+        ctx.sendFollowUp({ content: `Playlist zerada` });
     }
 }

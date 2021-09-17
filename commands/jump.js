@@ -24,12 +24,12 @@ module.exports = class extends SlashCommand {
         await ctx.defer();
 
         const queue = client.player.getQueue(ctx.guildID);
-        if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: "❌ | No music is being played!" });
+        if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: "Não tem nenhuma musica tocando, burro" });
         
         const trackIndex = ctx.options.tracks - 1;
         const trackName = queue.tracks[trackIndex].title;
         queue.jump(trackIndex);
 
-        ctx.sendFollowUp({ content: `⏭ | **${trackName}** has jumped the queue!` });
+        ctx.sendFollowUp({ content: `Pulando **${trackName}** ` });
     }
 }

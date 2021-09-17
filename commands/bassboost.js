@@ -17,14 +17,14 @@ module.exports = class extends SlashCommand {
         await ctx.defer();
 
         const queue = client.player.getQueue(ctx.guildID);
-        if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: "❌ | No music is being played!" });
+        if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: "Não tem nenhuma musica tocando, burro" });
         await queue.setFilters({
             bassboost: !queue.getFiltersEnabled().includes("bassboost"),
             normalizer2: !queue.getFiltersEnabled().includes("bassboost") // because we need to toggle it with bass
         });
 
         setTimeout(() => {
-            return void ctx.sendFollowUp({ content: `🎵 | Bassboost ${queue.getFiltersEnabled().includes("bassboost") ? "Enabled" : "Disabled"}!` });
+            return void ctx.sendFollowUp({ content: `🎵 | Bassboost ${queue.getFiltersEnabled().includes("bassboost") ? "Ligado" : "Desligado"}!` });
         }, queue.options.bufferingTimeout);
     }
 }

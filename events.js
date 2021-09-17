@@ -8,23 +8,23 @@ module.exports.registerPlayerEvents = (player) => {
     });
 
     player.on("trackStart", (queue, track) => {
-        queue.metadata.send(`🎶 | Started playing: **${track.title}** in **${queue.connection.channel.name}**!`);
+        queue.metadata.send(`Tocando **${track.title}** em **${queue.connection.channel.name}**!`);
     });
 
     player.on("trackAdd", (queue, track) => {
-        queue.metadata.send(`🎶 | Track **${track.title}** queued!`);
+        queue.metadata.send(`**${track.title}** tá na fila`);
     });
 
     player.on("botDisconnect", (queue) => {
-        queue.metadata.send("❌ | I was manually disconnected from the voice channel, clearing queue!");
+        queue.metadata.send("Adios");
     });
 
     player.on("channelEmpty", (queue) => {
-        queue.metadata.send("❌ | Nobody is in the voice channel, leaving...");
+        queue.metadata.send("Não tem ninguem no canal de voz...");
     });
 
     player.on("queueEnd", (queue) => {
-        queue.metadata.send("✅ | Queue finished!");
+        queue.metadata.send("Acabou a playlist");
     });
 
 };

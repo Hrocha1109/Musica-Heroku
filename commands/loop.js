@@ -43,10 +43,10 @@ module.exports = class extends SlashCommand {
 
         await ctx.defer();
         const queue = client.player.getQueue(ctx.guildID);
-        if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: "❌ | No music is being played!" });
+        if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: "Não tem nenhuma musica tocando, burro" });
         const loopMode = ctx.options.mode;
         const success = queue.setRepeatMode(loopMode);
         const mode = loopMode === QueueRepeatMode.TRACK ? "🔂" : loopMode === QueueRepeatMode.QUEUE ? "🔁" : "▶";
-        return void ctx.sendFollowUp({ content: success ? `${mode} | Updated loop mode!` : "❌ | Could not update loop mode!" });
+        return void ctx.sendFollowUp({ content: success ? `${mode} Loop atualizado` : "Deu ruim" });
     }
 }

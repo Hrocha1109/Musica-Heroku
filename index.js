@@ -45,3 +45,10 @@ client.login(process.env.DJS_TOKEN);
 
 module.exports.client = client;
 module.exports.creator = creator;
+
+const http = require('http');
+const server = http.createServer((req, res) => {
+  res.writeHead(200);
+  res.end('ok');
+});
+server.listen(3000);
