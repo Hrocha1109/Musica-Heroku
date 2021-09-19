@@ -24,11 +24,11 @@ module.exports = class extends SlashCommand {
         await ctx.defer();
 
         const queue = client.player.getQueue(ctx.guildID);
-        if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: "Não tem nenhuma musica tocando, burro" });
+        if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: "❌ | No music is being played!" });
         
         const time = ctx.options.time * 1000;
         await queue.seek(time);
 
-        ctx.sendFollowUp({ content: `Avançando ${time / 1000} segundos` });
+        ctx.sendFollowUp({ content: `✅ | Seeked to ${time / 1000} seconds` });
     }
 }

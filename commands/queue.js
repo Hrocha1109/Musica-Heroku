@@ -24,7 +24,7 @@ module.exports = class extends SlashCommand {
         
         await ctx.defer();
         const queue = client.player.getQueue(ctx.guildID);
-        if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: "Não tem nenhuma musica tocando, burro" });
+        if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: "❌ | No music is being played!" });
         if (!ctx.options.page) ctx.options.page = 1;
         const pageStart = 10 * (ctx.options.page - 1);
         const pageEnd = pageStart + 10;
@@ -43,7 +43,7 @@ module.exports = class extends SlashCommand {
                             : ""
                     }`,
                     color: 0xff0000,
-                    fields: [{ name: "Tocando:", value: `🎶 | **${currentTrack.title}** ([link](${currentTrack.url}))` }]
+                    fields: [{ name: "Now Playing", value: `🎶 | **${currentTrack.title}** ([link](${currentTrack.url}))` }]
                 }
             ]
         });
