@@ -1,9 +1,9 @@
 const dotenv = require('dotenv');
-const path = require('path');
+const path = require('path');
 const { SlashCreator, GatewayServer } = require('slash-create');
-const { Client } = require('discord.js');
+const { Client } = require('discord.js');
 const { Player } = require('discord-player');
-const { registerPlayerEvents } = require('./events');
+const { registerPlayerEvents } = require('./events');
 const { generateDocs } = require('./docs');
 
 dotenv.config();
@@ -19,8 +19,8 @@ client.player = new Player(client);
 registerPlayerEvents(client.player);
 
 const creator = new SlashCreator({
-  applicationID: process.env.DJS_CLIENT_ID,
-  token: process.env.DJS_TOKEN,
+    applicationID: process.env.DISCORD_CLIENT_ID,
+    token: process.env.DISCORD_CLIENT_TOKEN,
 });
 
 client.on('ready', () => {
@@ -41,14 +41,16 @@ creator
 if (process.env.DISCORD_GUILD_ID) creator.syncCommandsIn(process.env.DISCORD_GUILD_ID);
 else creator.syncCommands();
 
-client.login(process.env.DJS_TOKEN);
+client.login(process.env.DISCORD_CLIENT_TOKEN);
 
-module.exports.client = client;
-module.exports.creator = creator;
+module.exports = {
+    client,
+    creator
+};
 
 const http = require('http');
 const server = http.createServer((req, res) => {
-  res.writeHead(200);
-  res.end('ok');
+    res.writeHead(200);
+    res.end('ok');
 });
 server.listen(3000);
